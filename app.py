@@ -97,6 +97,18 @@ def get_live_nakshatra_and_tarabala(target_date):
     star_distance = (curr_idx - birth_idx) % 27
     return current_star, TARABALA_MATRIX[(star_distance % 9) + 1]
 
+# Dynamic Gochar Prediction Engine Definition
+def generate_gochar_prediction(day_name, status_str):
+    if "Exceptional" in status_str or "Supreme" in status_str or "Success" in status_str:
+        return f"🔮 **Planetary Weather Forecast:** High-velocity green-lit window. The current transits predict a major clearing of operational or financial bottlenecks today. Your mind and external circumstances are tightly synchronized. Excellent for executing premium contract negotiations, expanding logistics channels, or making calculated moves during your peak Hora hours."
+    elif "Avoid" in status_str or "Alert" in status_str or "Restriction" in status_str:
+        return f"🔮 **Planetary Weather Forecast:** Atmospheric friction detected. The current configurations predict temporary structural resistance, software processing delays, or communicative friction from external vendor systems. This is not a day for high-stakes blind gambling; it is designed for defense, backend systems cleanup, auditing operational logs, and preserving capital resources."
+    else:
+        if day_name in ["Wednesday", "Thursday"]:
+            return f"🔮 **Planetary Weather Forecast:** Clear skies and high intellectual coordination. Transits predict excellent clarity regarding commercial contracts and digital asset infrastructure management. A highly practical day to push platform upgrades forward or refine long-range wealth matrices."
+        else:
+            return f"🔮 **Planetary Weather Forecast:** Steady, grounding current. The cosmic weather predicts linear, foundational progress. Energy is optimized for standard task completion, micro-level portfolio balancing, and closing lingering internal operational backlogs behind the scenes."
+
 def get_dubai_rahu_kaal(day_name, target_date):
     try:
         url = f"https://api.sunrise-sunset.org/json?lat=25.2048&lng=55.2708&date={target_date.strftime('%Y-%m-%d')}&formatted=0"
@@ -138,11 +150,9 @@ def calculate_hora_sequence(day_name):
 # Mobile UI Layout Configuration
 st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered")
 
-# UPGRADED: Title and Subtitle anchors centered for symmetry on mobile screens
 st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px; text-align: center;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.markdown(f"<p style='text-align: center; font-size: 13px; color: #808495; margin-top: 2px; margin-bottom: 10px;'>Lagna: Pisces | Birth Star: {MY_PROFILE['birth_nakshatra']} | Rashi: Gemini</p>", unsafe_allow_html=True)
 
-# Top Level Toggle Navigation Bar
 view_mode = st.radio("Select View Mode:", ["☀️ Daily Engine", "🌌 Macro Horizons"], horizontal=True)
 
 st.write("---")
@@ -167,9 +177,14 @@ if view_mode == "☀️ Daily Engine":
     style_info = DAILY_STYLE_LOOKUP[day_name]
     current_star, tarabala = get_live_nakshatra_and_tarabala(target_date)
     rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
+    prediction_text = generate_gochar_prediction(day_name, tarabala["status"])
 
     st.markdown(f'<div style="background-color: {theme["bg"]}; border-left: 5px solid {theme["color"]}; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 24px; float: right;">{theme["emoji"]}</span><h3 style="margin: 0; color: {theme["color"]}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme["planet"].upper()}</h3><p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme["vibe"]}</p></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
+    
+    # NEWLY INJECTED: Dynamic Transit Prediction Notice Card
+    st.info(prediction_text)
+    
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
     # Interactive Checklist Scorecard Module
