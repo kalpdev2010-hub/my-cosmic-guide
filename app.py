@@ -30,7 +30,7 @@ def get_daily_advice(day_name):
 # Streamlit Mobile UI Configuration
 st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered")
 
-st.title("🔱 My Daily Cosmic Guide")
+st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.caption(f"Lagna: {MY_PROFILE['ascendant_lagna']} | Nakshatra: {MY_PROFILE['birth_nakshatra']} | Rashi: {MY_PROFILE['moon_sign']}")
 
 # Interactive Date Picker (Defaults to Today)
