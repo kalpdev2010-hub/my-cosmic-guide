@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import requests
 
 # Permanent custom birth chart coordinates
 MY_PROFILE = {
@@ -20,6 +21,53 @@ PLANET_THEMES = {
     "Friday": {"planet": "Venus", "emoji": "💎", "color": "#FF69B4", "bg": "#2b001a", "vibe": "Creative Masterclass & Asset Harmony Active"},
     "Saturday": {"planet": "Saturn", "emoji": "🪐", "color": "#4682B4", "bg": "#0d1b2a", "vibe": "Deep Focus, Structure & Discipline Active"}
 }
+
+# Live Astronomical Data Fetcher for Dubai (Latitude: 25.2048, Longitude: 55.2708)
+def get_dubai_rahu_kaal(day_name, target_date):
+    # Default fallbacks if the API fails or is offline
+    default_sunrise = datetime.time(6, 0)
+    default_sunset = datetime.time(18, 30)
+    
+    try:
+        url = f"https://api.sunrise-sunset.org/json?lat=25.2048&lng=55.2708&date={target_date.strftime('%Y-%m-%d')}&formatted=0"
+        response = requests.get(url, timeout=5).json()
+        if response["status"] == "OK":
+            # Parse UTC times from API response
+            sunrise_utc = datetime.datetime.fromisoformat(response["results"]["sunrise"])
+            sunset_utc = datetime.datetime.fromisoformat(response["results"]["sunset"])
+            
+            # Convert to Dubai Local Time (UTC + 4)
+            sunrise_local = sunrise_utc + datetime.timedelta(hours=4)
+            sunset_local = sunset_utc + datetime.timedelta(hours=4)
+        else:
+            raise Exception("API status not OK")
+    except:
+        # Fallback to standard averages if API times out
+        today_mid = datetime.datetime.combine(target_date, datetime.time(0, 0))
+        sunrise_local = today_mid + datetime.timedelta(hours=6)
+        sunset_local = today_mid + datetime.timedelta(hours=18, minutes=30)
+
+    # Calculate length of daylight and split into 8 equal cosmic parts
+    daylight_duration = sunset_local - sunrise_local
+    part_duration = daylight_duration / 8
+    
+    # Vedic Rahu Kaal order map based on weekday (0-indexed order of segments)
+    rahu_order = {
+        "Monday": 1,     # 2nd part
+        "Saturday": 2,   # 3rd part
+        "Friday": 3,     # 4th part
+        "Wednesday": 4,  # 5th part
+        "Thursday": 5,   # 6th part
+        "Tuesday": 6,    # 7th part
+        "Sunday": 7      # 8th part
+    }
+    
+    target_part = rahu_order.get(day_name, 0)
+    
+    start_time = sunrise_local + (part_duration * target_part)
+    end_time = start_time + part_duration
+    
+    return start_time.strftime("%I:%M %p"), end_time.strftime("%I:%M %p")
 
 def get_detailed_decision_matrix(day_name):
     if day_name == "Monday":
@@ -79,7 +127,6 @@ def get_detailed_decision_matrix(day_name):
             "legal": "🟢 **Favorable:** Strong alignment for dealing with governmental approvals, regulatory bodies, and compliance certificates."
         }
 
-# Hour-level (Hora) engine
 def get_hora_vibe(hora_planet):
     if hora_planet == "Jupiter":
         return "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial transactions, long-term investments, meeting mentors, legal clarity, and major decisions."
@@ -123,8 +170,9 @@ st.caption(f"Lagna: {MY_PROFILE['ascendant_lagna']} | Nakshatra: {MY_PROFILE['bi
 target_date = st.date_input("Select Date", datetime.date.today())
 day_name = target_date.strftime("%A")
 
-# Fetch Current Planetary Theme
+# Fetch Current Planetary Theme & Live Dubai Rahu Kaal window
 theme = PLANET_THEMES[day_name]
+rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
 
 # Premium Cosmic Power Card Element Injection
 card_html = f"""
@@ -143,6 +191,9 @@ card_html = f"""
 </div>
 """
 st.markdown(card_html, unsafe_allow_html=True)
+
+# Live Critical Warning Notification Alert Box
+st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals, wire transfers, or asset commitments today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
 # Render Section 1: Major Day Sectors
 st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
