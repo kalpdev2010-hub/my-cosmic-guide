@@ -10,7 +10,17 @@ MY_PROFILE = {
     "malefic_planets": ["Saturn", "Venus"]
 }
 
-# 1. Day-level rules engine
+# Planetary Visual Themes Engine
+PLANET_THEMES = {
+    "Sunday": {"planet": "Sun", "emoji": "☀️", "color": "#FF8C00", "bg": "#2b1a00", "vibe": "Pure Vitality & Leadership Aura Active"},
+    "Monday": {"planet": "Moon", "emoji": "🌙", "color": "#A9A9A9", "bg": "#131822", "vibe": "Fluid Intuition & Emotional Clarity Active"},
+    "Tuesday": {"planet": "Mars", "emoji": "💥", "color": "#FF4500", "bg": "#2b0b00", "vibe": "High-Drive Execution & Tactical Focus Active"},
+    "Wednesday": {"planet": "Mercury", "emoji": "🌿", "color": "#00FF7F", "bg": "#00240f", "vibe": "Sharp Communication & Analytical Edge Active"},
+    "Thursday": {"planet": "Jupiter", "emoji": "👑", "color": "#FFD700", "bg": "#2b2500", "vibe": "Supreme Wisdom & Massive Fortune Expansion Active"},
+    "Friday": {"planet": "Venus", "emoji": "💎", "color": "#FF69B4", "bg": "#2b001a", "vibe": "Creative Masterclass & Asset Harmony Active"},
+    "Saturday": {"planet": "Saturn", "emoji": "🪐", "color": "#4682B4", "bg": "#0d1b2a", "vibe": "Deep Focus, Structure & Discipline Active"}
+}
+
 def get_detailed_decision_matrix(day_name):
     if day_name == "Monday":
         return {
@@ -69,7 +79,7 @@ def get_detailed_decision_matrix(day_name):
             "legal": "🟢 **Favorable:** Strong alignment for dealing with governmental approvals, regulatory bodies, and compliance certificates."
         }
 
-# 2. Hour-level (Hora) engine
+# Hour-level (Hora) engine
 def get_hora_vibe(hora_planet):
     if hora_planet == "Jupiter":
         return "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial transactions, long-term investments, meeting mentors, legal clarity, and major decisions."
@@ -113,7 +123,28 @@ st.caption(f"Lagna: {MY_PROFILE['ascendant_lagna']} | Nakshatra: {MY_PROFILE['bi
 target_date = st.date_input("Select Date", datetime.date.today())
 day_name = target_date.strftime("%A")
 
-# Fix: Only this specific subheading line font size is reduced to 18px to ensure it fits perfectly in 1 line
+# Fetch Current Planetary Theme
+theme = PLANET_THEMES[day_name]
+
+# Premium Cosmic Power Card Element Injection
+card_html = f"""
+<div style="
+    background-color: {theme['bg']}; 
+    border-left: 5px solid {theme['color']}; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-top: 10px; 
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+">
+    <span style="font-size: 24px; float: right;">{theme['emoji']}</span>
+    <h3 style="margin: 0; color: {theme['color']}; font-size: 16px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme['planet'].upper()}</h3>
+    <p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme['vibe']}</p>
+</div>
+"""
+st.markdown(card_html, unsafe_allow_html=True)
+
+# Render Section 1: Major Day Sectors
 st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
 decisions = get_detailed_decision_matrix(day_name)
 
