@@ -97,16 +97,26 @@ def get_live_nakshatra_and_tarabala(target_date):
     star_distance = (curr_idx - birth_idx) % 27
     return current_star, TARABALA_MATRIX[(star_distance % 9) + 1]
 
-def generate_gochar_prediction(day_name, status_str):
+# Advanced Multi-Sector Target Prediction Engine
+def get_advanced_predictions(day_name, status_str):
     if "Exceptional" in status_str or "Supreme" in status_str or "Success" in status_str:
-        return f"🔮 **Planetary Weather Forecast:** High-velocity green-lit window. The transits predict clearing of operational or financial bottlenecks. Excellent for executing contract changes, expanding logistics channels, or finalizing technical code blocks."
+        return {
+            "career": "🟢 **High Momentum:** Saturn transiting 10th from your Moon rewards precision logistics. Exalted Jupiter triggers clean strategic clarity. Execute platforms upgrades, update theme code structures, or deploy marketing modifications during peak hours.",
+            "finance": "🟢 **Compounding Peak:** Excellent alignment for tracking Systematic Investment Plans (SIPs) or long-term fund positioning. A supportive window to audit structural cash reserves or route incoming revenue safely.",
+            "health": "🟢 **Vital Recovery:** Jupiter casts its protective 9th aspect back onto your physical body (1st house). Immune vectors are boosted. High physical endurance window; execute demanding operational workflows confidently."
+        }
     elif "Avoid" in status_str or "Alert" in status_str or "Restriction" in status_str:
-        return f"🔮 **Planetary Weather Forecast:** Atmospheric friction detected. Current transits predict minor system delays or communication errors with external vendor setups. Prioritize system backups, backend asset tracking, and verification audits today."
+        return {
+            "career": "❌ **Consolidation Required:** Ambient friction could cause server delays or communicative bottlenecks with external distribution setups. Dedicate energy strictly to resolving technical debt, archiving old files, or sorting inventory frameworks.",
+            "finance": "❌ **Defensive Posture:** Keep core capital reserves insulated. Postpone heavy initial investments into completely unverified commercial vendor frameworks or launching complex structural debts today.",
+            "health": "⚠️ **Energy Drain Warning:** Saturn hovering in your 1st house can trigger physical fatigue or screen eye strain under heavy pressure. Set mandatory screen breaks and enforce firm boundary lines around sleep."
+        }
     else:
-        if day_name in ["Wednesday", "Thursday"]:
-            return f"🔮 **Planetary Weather Forecast:** Clear skies and high operational functionality. Strategic planning regarding digital asset layouts, platform architecture updates, or compounding investments is strongly favored."
-        else:
-            return f"🔮 **Planetary Weather Forecast:** Steady, grounding current. Energy is fully optimized for closing open server issues, sorting administrative records, and performing standard warehouse log checks behind the scenes."
+        return {
+            "career": "🟡 **Linear Progression:** Stable parameters for processing standard e-commerce tasks, coordinating client reports, and checking frontend analytics. Intuition is well-balanced for long-range optimization planning.",
+            "finance": "🟡 **Stable Balance:** Safe configuration for micro-budget adjustments or routine banking transfers. Maintain your default compounding strategies; avoid quick high-risk retail speculation positions.",
+            "health": "🟡 **Grounded Vitality:** Standard respiratory and nervous system stability. Keep posture aligned during long table sessions and maintain your standard hydration index."
+        }
 
 def get_dubai_rahu_kaal(day_name, target_date):
     try:
@@ -149,25 +159,15 @@ def calculate_hora_sequence(day_name):
 # Mobile UI Layout Configuration
 st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered")
 
-# Active State Setup
 if "selected_date" not in st.session_state: 
     st.session_state.selected_date = datetime.date.today()
 
-# Sync Date Parameter Early
-view_mode_check = st.sidebar.hidden = True # hidden utility helper
 target_date = st.session_state.selected_date
 day_name = target_date.strftime("%A")
 theme = PLANET_THEMES[day_name]
 
-# NEWLY INJECTED CSS: Global theme color shifts based on the selected day
-st.markdown(f"""
-<style>
-.stApp {{
-    background: linear-gradient(180deg, {theme['bg']} 0%, #0e1117 100%) !important;
-    background-attachment: fixed !important;
-}}
-</style>
-""", unsafe_allow_html=True)
+# Global Custom Color CSS Injection
+st.markdown(f"<style>.stApp {{background: linear-gradient(180deg, {theme['bg']} 0%, #0e1117 100%) !important; background-attachment: fixed !important;}}</style>", unsafe_allow_html=True)
 
 st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px; text-align: center;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 13px; color: #808495; margin-top: 2px; margin-bottom: 10px;'>Lagna: Pisces | Birth Star: Ardra | Rashi: Gemini</p>", unsafe_allow_html=True)
@@ -188,19 +188,28 @@ if view_mode == "☀️ Daily Engine":
     calendar_date = st.date_input("Or look up an alternative date:", value=st.session_state.selected_date)
     if calendar_date != st.session_state.selected_date: st.session_state.selected_date = calendar_date
 
-    # Recalculate following button events
     target_date = st.session_state.selected_date
     day_name = target_date.strftime("%A")
     theme = PLANET_THEMES[day_name]
     style_info = DAILY_STYLE_LOOKUP[day_name]
     current_star, tarabala = get_live_nakshatra_and_tarabala(target_date)
     rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
-    prediction_text = generate_gochar_prediction(day_name, tarabala["status"])
+    
+    # Generate Advanced Multi-Sector Predictions
+    preds = get_advanced_predictions(day_name, tarabala["status"])
 
     st.markdown(f'<div style="background-color: {theme["bg"]}; border-left: 5px solid {theme["color"]}; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 24px; float: right;">{theme["emoji"]}</span><h3 style="margin: 0; color: {theme["color"]}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme["planet"].upper()}</h3><p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme["vibe"]}</p></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     
-    st.info(prediction_text)
+    # RESTORED / UPGRADED: Unified Gochar Target Predictions Section
+    st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>🔮 Gochar Forecast (Predictions)</h2>", unsafe_allow_html=True)
+    with st.expander("💼 Career Prediction", expanded=True):
+        st.write(preds["career"])
+    with st.expander("💰 Finance Prediction", expanded=False):
+        st.write(preds["finance"])
+    with st.expander("🏥 Health Prediction", expanded=False):
+        st.write(preds["health"])
+        
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
     # Interactive Checklist Scorecard Module
