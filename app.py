@@ -71,7 +71,6 @@ def get_detailed_decision_matrix(day_name):
 
 # 2. Hour-level (Hora) engine
 def get_hora_vibe(hora_planet):
-    # Maps the hourly planetary ruler to specific actionable guidance
     if hora_planet == "Jupiter":
         return "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial transactions, long-term investments, meeting mentors, legal clarity, and major decisions."
     elif hora_planet == "Mercury":
@@ -88,7 +87,6 @@ def get_hora_vibe(hora_planet):
         return "⏳ **Delay Hour (Restrictive):** Best used for routine maintenance, deep organizing, data cleaning, and heavy administrative work. **Avoid** launching new projects."
 
 def calculate_hora_sequence(day_name):
-    # Standard Chaldean order sequence starting from the Day Lord
     order = ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"]
     day_lords = {
         "Sunday": "Sun", "Monday": "Moon", "Tuesday": "Mars", 
@@ -98,7 +96,6 @@ def calculate_hora_sequence(day_name):
     start_planet = day_lords[day_name]
     start_index = order.index(start_planet)
     
-    # Generate the 24-hour sequence starting from standard approximate local sunrise (6:00 AM)
     sequence = []
     for i in range(24):
         planet = order[(start_index + i) % 7]
@@ -133,18 +130,29 @@ with st.expander("⚖️ Property & Legal", expanded=False):
 
 st.write("---")
 
-# Render Section 2: Hourly Micro-Planner
+# Render Section 2: Hourly Micro-Planner with Smart Defaulting
 st.subheader("⏰ Hourly Time Planner (Hora)")
 st.caption("Plan your specific execution windows throughout the day:")
 
 hora_list = calculate_hora_sequence(day_name)
 
-# Interactive selector for checking specific time blocks
+# Dynamic local time calculation (UTC + 4 hours for local comfort)
+local_now = datetime.datetime.utcnow() + datetime.timedelta(hours=4)
+current_hour = local_now.hour
+
+# Match the current system hour to the correct list slot index
+default_slot_index = (current_hour - 6) % 24
+
+# Set up dropdown options list
+dropdown_options = [f"{slot[0]} (Ruled by {slot[1]})" for slot in hora_list]
+
+# Dropdown displays current hour by default using index parameter
 selected_slot = st.selectbox(
     "Choose a time block to inspect:",
-    options=[f"{slot[0]} (Ruled by {slot[1]})" for slot in hora_list]
+    options=dropdown_options,
+    index=default_slot_index
 )
 
-# Extract planet name from selection to look up specific alignment rules
+# Extract planet name from selection to show rule set
 chosen_planet = selected_slot.split("Ruled by ")[1].replace(")", "")
 st.info(get_hora_vibe(chosen_planet))
