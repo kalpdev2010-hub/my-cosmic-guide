@@ -71,7 +71,7 @@ MACRO_DATA = {
     "6 Months": {
         "job": {"good": "Transit support favors massive professional growth, expanding your career authority, and mastering workplace skills.", "bad": "Hidden stress from older, pending work assignments. Resolve administrative backlogs early."},
         "finance": {"good": "Substantial foundational savings growth. Excellent for structural financial planning.", "bad": "Rahu/Ketu transits require total caution regarding ambiguous financial schemes or non-verified funds."},
-        "health": {"good": "High nervous system resilience and stamina recovery windows.", "bad": "Do not skip regular physical health checkups or personal stress auditing."},
+        "health": {"good": "High nervous system resilience and stamina recovery windows.", "bad": "Do not skip regular health checkpoints or stress auditing."},
         "relationship": {"good": "Excellent period to solidify your inner circle and eliminate distracting, draining associations.", "bad": "Opaque communication can create minor misunderstandings if not cleared up immediately."}
     },
     "Yearly": {
@@ -97,7 +97,39 @@ def get_live_nakshatra_and_tarabala(target_date):
     star_distance = (curr_idx - birth_idx) % 27
     return current_star, TARABALA_MATRIX[(star_distance % 9) + 1]
 
-# Advanced Multi-Sector Target Prediction Engine (Refined for Job/Personal focus)
+# Interactive Intelligent Intent Parsing Oracle Engine
+def evaluate_cosmic_oracle(question, day_name, tarabala):
+    q = question.lower()
+    is_good_tara = "❌" not in tarabala["status"]
+    
+    # Category 1: Advanced Tech Hardware Configurations
+    if any(w in q for w in ["pc", "computer", "laptop", "phone", "mobile", "electronics", "gadget", "screen", "tv"]):
+        if is_good_tara and day_name in ["Wednesday", "Thursday", "Friday"]:
+            return "🟢 **Oracle Verdict: APPROVED.** Your current star frequency matches the active day lines beautifully. Mercury (technology/electronics) and Jupiter (wisdom/value) are strongly configured. This is a highly favorable window to lock in this computer/device purchase. Try to execute the checkout during a Mercury or Jupiter Hora block for seamless operational alignment!"
+        else:
+            return "⏳ **Oracle Verdict: ADVISED TO POSTPONE.** The current transit landscape presents an unstable background current for technical systems or hardware assets. Processing a technology asset under this sky pattern can elevate risks of manufacturing faults, software integration friction, or buyer's remorse. Advised to wait for an upcoming *Sampat* or *Sadhana* star alignment phase."
+            
+    # Category 2: General Spending & Investments
+    elif any(w in q for w in ["buy", "purchase", "spend", "invest", "money", "gold", "car", "vehicle", "etf", "sip"]):
+        if "Exceptional" in tarabala["status"] or "Supreme" in tarabala["status"] or day_name in ["Thursday", "Monday", "Wednesday"]:
+            return "🟢 **Oracle Verdict: APPROVED.** Capital flow routes are currently supported by your planetary landscape. Asset acquisition or necessary household upgrades carry solid cosmic grounding. Ensure you execute payments outside of the active Dubai *Rahu Kaal* time slot to bypass unexpected technical checkout loop errors."
+        else:
+            return "⏳ **Oracle Verdict: ADVISED TO POSTPONE.** Hold back on definitive capital outflows or processing major physical transactions right now. The current astrological tide favors internal financial audits, price comparison, or portfolio tracking over outbound physical checkout spending. Keep cash liquid for another 24-48 hours."
+            
+    # Category 3: Work Interactions & Applications
+    elif any(w in q for w in ["job", "interview", "meeting", "apply", "email", "talk", "discuss", "manager", "boss"]):
+        if is_good_tara and day_name not in ["Saturday"]:
+            return "🟢 **Oracle Verdict: APPROVED.** Your communicative clarity is strongly supported. Great alignment to send high-priority career correspondence, layout technical tasks, or discuss schedules with management. Your intellect carries an influential, objective presence today."
+        else:
+            return "⚠️ **Oracle Verdict: HANDLE WITH CAUTION / DELAY.** If possible, defer high-stakes or sensitive workspace discussions. Current frequencies favor focused, solitary execution, code checking, and backend administrative processing. If you must proceed, communicate explicitly using recorded written logs and double-check your facts."
+            
+    # Universal Fallback Catch-All Engine
+    else:
+        if is_good_tara:
+            return f"✨ **Oracle Verdict: GENERALLY APPROVED.** Your active birth star timing is currently protected and supportive ({tarabala['name']}). While the specific question requires your practical judgment, the cosmic background elements are structurally clear of immediate threat indexes today."
+        else:
+            return f"⏳ **Oracle Verdict: CHOOSE DEFENSIVE DELAY.** Your active star profile is transiting a restrictive or high-friction phase ({tarabala['name']}). Classic Vedic planning recommends avoiding defining personal commitments or massive choices for the next 24 hours. Focus purely on routine execution behind the scenes."
+
 def get_advanced_predictions(day_name, status_str):
     if "Exceptional" in status_str or "Supreme" in status_str or "Success" in status_str:
         return {
@@ -138,7 +170,7 @@ def get_detailed_decision_matrix(day_name):
     matrix = {
         "Monday": {"wealth": "🟢 **Good:** Micro-investments or routing funds to liquid assets. Avoid risky speculative trading.", "business": "🟢 **Favorable:** Great for office teamwork, professional coordination, and clear workplace communication.", "travel": "🟢 **Safe:** Peaceful short-distance transits or commutes.", "health": "🟡 **Neutral:** Prioritize hydration and rest.", "legal": "❌ **Avoid:** Do not execute adversarial personal legal agreements today."},
         "Tuesday": {"wealth": "❌ **Restriction:** Avoid signing major personal loan frameworks or lending capital.", "business": "🟢 **High Power:** Perfect for organizing schedules, handling detailed reports, and executing pending job tasks.", "travel": "🟡 **Caution:** Keep transits brief and highly structured.", "health": "🟢 **Excellent:** High energy window. Ideal for starting workout variations or physical adjustments.", "legal": "🟢 **Favorable:** Strong configuration for filing updates and managing documentation."},
-        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for personal asset adjustments and reviewing account configurations.", "business": "🟢 **Excellent:** Maximum professional alignment for completing key assignments, sending important updates, and organizing tasks.", "travel": "🟢 **Highly Favorable:** Top alignment for professional logistics and work-related transits.", "health": "🟢 **Good:** Great day for clean eating and cardiovascular routines.", "legal": "🟢 **Favorable:** Ideal for document registration filings and contract reviews."},
+        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for personal asset adjustments and reviewing account configurations.", "business": "🟢 **Excellent:** Maximum professional alignment for completing key assignments, sending important updates, and organizing tasks.", "travel": "🟢 **Highly Favorable:** Top alignment for professional logistics and work-related transits.", "health": "🟢 **Good:** Great day for neurological wellness, yoga, breathing exercises, and dietary adjustments.", "legal": "🟢 **Favorable:** Ideal for document registration filings and contract reviews."},
         "Thursday": {"wealth": "🟢 **Supreme Alignment:** Premier window for mutual fund review, long-term asset positioning, and setting strategic personal investments.", "business": "🟢 **Supreme Alignment:** Perfect for high-level career planning, aligning with professional mentors, and focusing on job growth.", "travel": "🟢 **Favorable:** Supports executive or career-related transit.", "health": "🟢 **Good:** Highly favorable for beginning systematic dietary regimens.", "legal": "🟢 **Excellent:** Exceptional protection for regulatory compliance reviews."},
         "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to high-risk stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing collaboration, presentation reviews, and design tasks at your job.", "travel": "🟢 **Safe:** Smooth, stress-free travel profiles.", "health": "🟡 **Neutral:** Rest up and avoid heavy, dense meals.", "legal": "🟡 **Neutral:** Safe for standard document processing."},
         "Saturday": {"wealth": "🟡 **Caution:** Avoid volatile trades. Favorable for purchasing durable hard assets or necessary equipment.", "business": "🟢 **Productive:** Lock down backend documentation, personal schedule organization, and clearing administrative logs.", "travel": "❌ **Avoid:** Postpone long personal journeys to bypass unexpected delays.", "health": "🟡 **Caution:** Watch joint strain. Excellent for deep rest cycles.", "legal": "🟡 **Neutral:** Slow movement; use strictly to review structural fine-print clauses."},
@@ -200,13 +232,22 @@ if view_mode == "☀️ Daily Engine":
     st.markdown(f'<div style="background-color: {theme["bg"]}; border-left: 5px solid {theme["color"]}; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 24px; float: right;">{theme["emoji"]}</span><h3 style="margin: 0; color: {theme["color"]}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme["planet"].upper()}</h3><p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme["vibe"]}</p></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     
+    # NEWLY INJECTED: Interactive Cosmic Decision Oracle Module
+    st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>🔮 Cosmic Decision Oracle</h2>", unsafe_allow_html=True)
+    user_q = st.text_input("Ask a question regarding your day:", placeholder="e.g., Should I buy a PC today?", key="oracle_query_input")
+    
+    if user_q:
+        oracle_verdict = evaluate_cosmic_oracle(user_q, day_name, tarabala)
+        st.markdown(f"""
+        <div style="background-color: #171b26; border-radius: 8px; padding: 14px; border-left: 4px solid #9A7BFF; margin-bottom: 15px; box-shadow: 0px 2px 8px rgba(0,0,0,0.2);">
+            <p style="margin: 0; font-size: 13px; color: #ffffff; line-height: 1.5;">{oracle_verdict}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>🔮 Gochar Forecast (Predictions)</h2>", unsafe_allow_html=True)
-    with st.expander("💼 Job & Career Prediction", expanded=True):
-        st.write(preds["career"])
-    with st.expander("💰 Personal Finance Prediction", expanded=False):
-        st.write(preds["finance"])
-    with st.expander("🏥 Personal Health Prediction", expanded=False):
-        st.write(preds["health"])
+    with st.expander("💼 Job & Career Prediction", expanded=True): st.write(preds["career"])
+    with st.expander("💰 Personal Finance Prediction", expanded=False): st.write(preds["finance"])
+    with st.expander("🏥 Personal Health Prediction", expanded=False): st.write(preds["health"])
         
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
