@@ -40,7 +40,6 @@ PLANET_THEMES = {
 }
 
 def get_live_nakshatra_and_tarabala(target_date):
-    # Try fetching live astronomical data from the open server
     try:
         url = f"https://api.vedastro.org/api/Calculate/MoonConstellation/Location/25.2048,55.2708/Time/12:00/{target_date.strftime('%d-%m-%Y')}/+04:00"
         res = requests.get(url, timeout=4).json()
@@ -48,18 +47,15 @@ def get_live_nakshatra_and_tarabala(target_date):
         if current_star not in NAKSHATRAS:
             raise Exception()
     except:
-        # High-precision backup tracker using verified 2026 cosmic benchmarks
-        base_date = datetime.date(2026, 5, 18)  # Pushya Nakshatra (Index 7)
+        base_date = datetime.date(2026, 5, 18)
         days_elapsed = (target_date - base_date).days
         current_star = NAKSHATRAS[(7 + days_elapsed) % 27]
 
-    # Compute mathematical Tarabala distance from Ardra (Index 5)
     birth_idx = NAKSHATRAS.index(MY_PROFILE["birth_nakshatra"])
     curr_idx = NAKSHATRAS.index(current_star)
     
     star_distance = (curr_idx - birth_idx) % 27
     tarabala_score = (star_distance % 9) + 1
-    
     return current_star, TARABALA_MATRIX[tarabala_score]
 
 def get_dubai_rahu_kaal(day_name, target_date):
@@ -89,7 +85,7 @@ def get_detailed_decision_matrix(day_name):
     matrix = {
         "Monday": {"wealth": "🟢 **Good:** Micro-investments or routing funds to liquid assets. Avoid risky speculative trading.", "business": "🟢 **Favorable:** Great for team coordination and creative brainstorming. Trust your gut.", "travel": "🟢 **Safe:** Peaceful short-distance transits.", "health": "🟡 **Neutral:** Prioritize hydration and rest.", "legal": "❌ **Avoid:** Do not execute adversarial legal settlements today."},
         "Tuesday": {"wealth": "❌ **Restriction:** Avoid signing major loan frameworks or lending capital.", "business": "🟢 **High Power:** Perfect for audits, technical execution, and operations maintenance.", "travel": "🟡 **Caution:** Keep transits brief and highly structured.", "health": "🟢 **Excellent:** High energy window. Ideal for medical adjustments.", "legal": "🟢 **Favorable:** Strong configuration for filing updates and formal contractual disputes."},
-        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for asset adjustments and checking account setups.", "business": "🟢 **Excellent:** Maximum commercial alignment for contract signing and marketing rollout.", "travel": "🟢 **Highly Favorable:** Top alignment for commercial logistics and inventory transit.", "health": "🟢 **Good:** Great day for clean eating and cardiovascular routines.", "legal": "🟢 **Favorable:** Ideal for registration filings and partnership reviews."},
+        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for asset adjustments and checking account setups.", "business": "🟢 **Excellent:** Maximum commercial alignment for contract signing and marketing rollout.", "travel": "🟢 **Highly Favorable:** Top alignment for commercial logistics and inventory transit.", "health": "🟢 **Good:** Great day for neurological wellness, yoga, breathing exercises, and dietary adjustments.", "legal": "🟢 **Favorable:** Ideal for registration filings and partnership reviews."},
         "Thursday": {"wealth": "🟢 **Supreme Alignment:** Premier window for mutual fund review, long-term asset positioning, and setting strategic investments.", "business": "🟢 **Supreme Alignment:** Perfect for high-level meetings, system design, and launching major expansion steps.", "travel": "🟢 **Favorable:** Supports executive or commercial transit.", "health": "🟢 **Good:** Highly favorable for beginning systematic dietary regimens.", "legal": "🟢 **Excellent:** Exceptional protection for regulatory compliance reviews."},
         "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to heavy industrial stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing marketing, PR events, and UI/UX reviews.", "travel": "🟢 **Safe:** Smooth, stress-free travel profiles.", "health": "🟡 **Neutral:** Rest up and avoid heavy, dense meals.", "legal": "🟡 **Neutral:** Safe for standard document processing."},
         "Saturday": {"wealth": "🟡 **Caution:** Avoid volatile trades. Favorable for physical assets or equipment purchases.", "business": "🟢 **Productive:** Lock down backend processing, data cleanups, and logistical maintenance.", "travel": "❌ **Avoid:** Postpone long personal journeys to bypass unexpected delays.", "health": "🟡 **Caution:** Watch joint strain. Excellent for deep rest cycles.", "legal": "🟡 **Neutral:** Slow movement; use strictly to review structural fine-print clauses."},
@@ -121,7 +117,30 @@ st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered
 st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.caption(f"Lagna: Pisces | Birth Star: {MY_PROFILE['birth_nakshatra']} | Rashi: Gemini")
 
-target_date = st.date_input("Select Date", datetime.date.today())
+# INTERACTIVE STATE ENGINE FOR DATE SELECTION
+if "selected_date" not in st.session_state:
+    st.session_state.selected_date = datetime.date.today()
+
+# Render horizontal shortcut pill-buttons for quick thumb access on phones
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("⬅️ Yesterday", use_container_width=True):
+        st.session_state.selected_date = datetime.date.today() - datetime.timedelta(days=1)
+with col2:
+    if st.button("☀️ Today", use_container_width=True):
+        st.session_state.selected_date = datetime.date.today()
+with col3:
+    if st.button("➡️ Tomorrow", use_container_width=True):
+        st.session_state.selected_date = datetime.date.today() + datetime.timedelta(days=1)
+
+# Calendar input tracking session state memory
+calendar_date = st.date_input("Or look up an alternative date:", value=st.session_state.selected_date)
+
+# Keep options synced seamlessly if user manually types/clicks calendar
+if calendar_date != st.session_state.selected_date:
+    st.session_state.selected_date = calendar_date
+
+target_date = st.session_state.selected_date
 day_name = target_date.strftime("%A")
 
 theme = PLANET_THEMES[day_name]
