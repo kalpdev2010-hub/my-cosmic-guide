@@ -135,11 +135,12 @@ def calculate_hora_sequence(day_name):
     start_index = order.index(day_lords[day_name])
     return [(f"{(6 + i) % 24:02d}:00 - {(7 + i) % 24:02d}:00", order[(start_index + i) % 7]) for i in range(24)]
 
-# Mobile UI Navigation Architecture
+# Mobile UI Layout Configuration
 st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered")
 
-st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
-st.caption("Lagna: Pisces | Birth Star: Ardra | Rashi: Gemini")
+# UPGRADED: Title and Subtitle anchors centered for symmetry on mobile screens
+st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px; text-align: center;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: center; font-size: 13px; color: #808495; margin-top: 2px; margin-bottom: 10px;'>Lagna: Pisces | Birth Star: {MY_PROFILE['birth_nakshatra']} | Rashi: Gemini</p>", unsafe_allow_html=True)
 
 # Top Level Toggle Navigation Bar
 view_mode = st.radio("Select View Mode:", ["☀️ Daily Engine", "🌌 Macro Horizons"], horizontal=True)
@@ -171,18 +172,15 @@ if view_mode == "☀️ Daily Engine":
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
-    # INTERACTIVE CHECKLIST SCORECARD MODULE
+    # Interactive Checklist Scorecard Module
     st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>📊 Daily Alignment Scorecard</h2>", unsafe_allow_html=True)
     
-    # Generate unique key references per date to prevent state crossover
     d_key = target_date.strftime("%Y%m%d")
-    
     c1 = st.checkbox(f"Wore matching apparel frequencies ({style_info['color']})", key=f"c1_{d_key}")
     c2 = st.checkbox(f"Complied with daily personal care directives ({style_info['grooming'].split('.')[0]})", key=f"c2_{d_key}")
     c3 = st.checkbox(f"Executed specific core asset mandate: {style_info['task']}", key=f"c3_{d_key}")
     c4 = st.checkbox(f"Safely circumnavigated Dubai Rahu Kaal window boundary limits", key=f"c4_{d_key}")
     
-    # Calculate alignment score percentage
     completed = sum([c1, c2, c3, c4])
     score_pct = int((completed / 4) * 100)
     
