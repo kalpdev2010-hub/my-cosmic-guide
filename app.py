@@ -39,6 +39,17 @@ PLANET_THEMES = {
     "Saturday": {"planet": "Saturn", "emoji": "🪐", "color": "#4682B4", "bg": "#0d1b2a", "vibe": "Deep Focus, Structure & Discipline Active"}
 }
 
+# Restored Core Grooming & Appearance Engine
+DAILY_STYLE_LOOKUP = {
+    "Monday": {"color": "White, Silver, or Cream", "grooming": "✅ Safe for hair & nail cutting."},
+    "Tuesday": {"color": "Bright Red or Coral", "grooming": "❌ Avoid cutting hair or nails today (Mars energy)."},
+    "Wednesday": {"color": "Green or Pastel Shades", "grooming": "✅ Excellent day for grooming and personal care."},
+    "Thursday": {"color": "Golden Yellow or Saffron", "grooming": "⚠️ Avoid major haircuts to preserve Jupiter energy."},
+    "Friday": {"color": "Clean White or Off-White", "grooming": "✅ Perfect for aesthetic grooming and spa routines."},
+    "Saturday": {"color": "Black, Dark Blue, or Charcoal", "grooming": "❌ Strictly avoid hair and nail cutting today."},
+    "Sunday": {"color": "Orange, Ruby Red, or Gold", "grooming": "Neutral day. Keep grooming minimal."}
+}
+
 def get_live_nakshatra_and_tarabala(target_date):
     try:
         url = f"https://api.vedastro.org/api/Calculate/MoonConstellation/Location/25.2048,55.2708/Time/12:00/{target_date.strftime('%d-%m-%Y')}/+04:00"
@@ -117,11 +128,10 @@ st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered
 st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.caption(f"Lagna: Pisces | Birth Star: {MY_PROFILE['birth_nakshatra']} | Rashi: Gemini")
 
-# INTERACTIVE STATE ENGINE FOR DATE SELECTION
+# Interactive State Engine for Date Selection
 if "selected_date" not in st.session_state:
     st.session_state.selected_date = datetime.date.today()
 
-# Render horizontal shortcut pill-buttons for quick thumb access on phones
 col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("⬅️ Yesterday", use_container_width=True):
@@ -133,10 +143,7 @@ with col3:
     if st.button("➡️ Tomorrow", use_container_width=True):
         st.session_state.selected_date = datetime.date.today() + datetime.timedelta(days=1)
 
-# Calendar input tracking session state memory
 calendar_date = st.date_input("Or look up an alternative date:", value=st.session_state.selected_date)
-
-# Keep options synced seamlessly if user manually types/clicks calendar
 if calendar_date != st.session_state.selected_date:
     st.session_state.selected_date = calendar_date
 
@@ -144,6 +151,7 @@ target_date = st.session_state.selected_date
 day_name = target_date.strftime("%A")
 
 theme = PLANET_THEMES[day_name]
+style_info = DAILY_STYLE_LOOKUP[day_name]
 current_star, tarabala = get_live_nakshatra_and_tarabala(target_date)
 rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
 
@@ -172,6 +180,13 @@ st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-st
 # Render: Decision Matrix
 st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
 decisions = get_detailed_decision_matrix(day_name)
+
+# RESTORED: Clean, highly visual dropdown blocks for appearance metrics
+with st.expander("🎨 Styling & Clothing Color", expanded=False):
+    st.info(f"**Recommended Colors for {day_name}:**\n\n{style_info['color']}")
+
+with st.expander("💇‍♂️ Personal Care & Grooming", expanded=False):
+    st.warning(f"**Grooming Directives:**\n\n{style_info['grooming']}")
 
 with st.expander("💰 Wealth & Investments", expanded=False): st.write(decisions["wealth"])
 with st.expander("💼 Business & Career", expanded=False): st.write(decisions["business"])
