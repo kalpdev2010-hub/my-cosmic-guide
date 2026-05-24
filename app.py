@@ -97,38 +97,51 @@ def get_live_nakshatra_and_tarabala(target_date):
     star_distance = (curr_idx - birth_idx) % 27
     return current_star, TARABALA_MATRIX[(star_distance % 9) + 1]
 
-# Interactive Intelligent Intent Parsing Oracle Engine
+# Dynamic Oracle Parsing Engine (Upgraded with Targeted Strategic Directives)
 def evaluate_cosmic_oracle(question, day_name, tarabala):
     q = question.lower()
     is_good_tara = "❌" not in tarabala["status"]
     
-    # Category 1: Advanced Tech Hardware Configurations
-    if any(w in q for w in ["pc", "computer", "laptop", "phone", "mobile", "electronics", "gadget", "screen", "tv"]):
+    # 1. Targeted Segment: Money Lending & Debts (Mars Conflict Core)
+    if any(w in q for w in ["lend", "lending", "borrow", "debt", "loan", "give money", "creditor"]):
+        if day_name == "Tuesday":
+            return "❌ **Oracle Directive: ABSOLUTELY DENIED.** Today is Tuesday, ruled directly by Mars. Classical Vedic principles heavily state that lending capital or initiating financial credits on a Tuesday traps the money in friction and delays. Do not distribute cash tokens today under any circumstance to preserve asset peace."
+        elif day_name == "Saturday" or not is_good_tara:
+            return "⏳ **Oracle Directive: ADVISE DELAY.** The background star matrix indicates restrictive or volatile patterns. Lending capital right now creates an asymmetric risk of baseline communication blocks. Hold your funds and table the discussion for a supportive Jupiter/Mercury day window."
+        else:
+            return "🟢 **Oracle Directive: APPROVED.** Frequencies are stable for managed transactions. Ensure the arrangement terms are documented clearly in writing, and execute outside of the local Dubai Rahu Kaal hour framework."
+
+    # 2. Targeted Segment: Impulse Control, Habits & Compulsions (Rahu Illusion Shield)
+    elif any(w in q for w in ["porn", "addiction", "habit", "urge", "relapse", "temptation", "impulse"]):
+        if day_name in ["Tuesday", "Saturday"] or not is_good_tara:
+            return "⚡ **Oracle Emergency Shield: ACTIVE.** Understand that the mental urge you are experiencing right now is an amplified cosmic shadow projection driven by Rahu friction. It is a temporary chemical illusion, not reality. **Actionable Step:** Shut down your mobile display immediately. Step into an open room or take a brisk walk for 15 minutes. Let this specific planetary frequency wave pass over your system without engaging it. Your core resilience is higher than the current transit pulse."
+        else:
+            return "🌱 **Oracle Support Directive:** Frequencies favor discipline and system cleansing today. Use this stable baseline window to redirect your focus into physical tasks, tracking compounding accounts, or organizing office logs. A short, focused wellness adjustment or breathing routine right now will completely stabilize your mental energy."
+
+    # 3. Targeted Segment: Work Pressure & Stress Relief (Saturn Core)
+    elif any(w in q for w in ["pressure", "stress", "workload", "deadline", "heavy", "tired", "burnout", "boss"]):
+        return "⏳ **Oracle De-escalation Directive:** Saturn is currently transiting your 1st house (body), which amplifies physical sensations of workplace pressure and exhaustion. Realize that this heavy mental load is an environmental transit frequency, not a permanent limitation. **Actionable Step:** Do not execute defining decisions or send reactive updates right now. Break your workload into smaller segments. Dedicate the next upcoming Jupiter or Venus Hora block purely to silent, focused execution, and enforce an ironclad boundary around your evening rest."
+
+    # 4. Targeted Segment: Personal Expenses & Outflows
+    elif any(w in q for w in ["expense", "buy", "purchase", "spend", "cost", "bill", "pc", "laptop", "phone"]):
         if is_good_tara and day_name in ["Wednesday", "Thursday", "Friday"]:
-            return "🟢 **Oracle Verdict: APPROVED.** Your current star frequency matches the active day lines beautifully. Mercury (technology/electronics) and Jupiter (wisdom/value) are strongly configured. This is a highly favorable window to lock in this computer/device purchase. Try to execute the checkout during a Mercury or Jupiter Hora block for seamless operational alignment!"
+            return "🟢 **Oracle Verdict: APPROVED.** Your current star frequency matches the active day lines beautifully. Asset processing, hardware optimization, or essential lifestyle allocations carry stable grounding. Execute your checkout during an active Mercury or Jupiter Hora block for seamless operational alignment."
         else:
-            return "⏳ **Oracle Verdict: ADVISED TO POSTPONE.** The current transit landscape presents an unstable background current for technical systems or hardware assets. Processing a technology asset under this sky pattern can elevate risks of manufacturing faults, software integration friction, or buyer's remorse. Advised to wait for an upcoming *Sampat* or *Sadhana* star alignment phase."
-            
-    # Category 2: General Spending & Investments
-    elif any(w in q for w in ["buy", "purchase", "spend", "invest", "money", "gold", "car", "vehicle", "etf", "sip"]):
-        if "Exceptional" in tarabala["status"] or "Supreme" in tarabala["status"] or day_name in ["Thursday", "Monday", "Wednesday"]:
-            return "🟢 **Oracle Verdict: APPROVED.** Capital flow routes are currently supported by your planetary landscape. Asset acquisition or necessary household upgrades carry solid cosmic grounding. Ensure you execute payments outside of the active Dubai *Rahu Kaal* time slot to bypass unexpected technical checkout loop errors."
+            return "⏳ **Oracle Verdict: CHOOSE DEFENSIVE DELAY.** The current background current presents a restrictive environment for technical or capital outflows. Processing a physical purchase under this sky pattern can elevate risks of technical faults or transaction friction. Table the transaction for 24-48 hours."
+
+    # 5. Targeted Segment: Food & Dietary Choices
+    elif any(w in q for w in ["food", "diet", "meal", "eating", "fasting", "dinner", "lunch"]):
+        if day_name in ["Tuesday", "Saturday"]:
+            return "⚠️ **Oracle Wellness Check:** Ambient cosmic energy is dense today. Avoid heavy, oily, or highly processed meals which can trigger slow digestion and posture fatigue. Opt for light, clean vegetarian fuel to shield your physical body from Saturn's transit pressure."
         else:
-            return "⏳ **Oracle Verdict: ADVISED TO POSTPONE.** Hold back on definitive capital outflows or processing major physical transactions right now. The current astrological tide favors internal financial audits, price comparison, or portfolio tracking over outbound physical checkout spending. Keep cash liquid for another 24-48 hours."
-            
-    # Category 3: Work Interactions & Applications
-    elif any(w in q for w in ["job", "interview", "meeting", "apply", "email", "talk", "discuss", "manager", "boss"]):
-        if is_good_tara and day_name not in ["Saturday"]:
-            return "🟢 **Oracle Verdict: APPROVED.** Your communicative clarity is strongly supported. Great alignment to send high-priority career correspondence, layout technical tasks, or discuss schedules with management. Your intellect carries an influential, objective presence today."
-        else:
-            return "⚠️ **Oracle Verdict: HANDLE WITH CAUTION / DELAY.** If possible, defer high-stakes or sensitive workspace discussions. Current frequencies favor focused, solitary execution, code checking, and backend administrative processing. If you must proceed, communicate explicitly using recorded written logs and double-check your facts."
-            
-    # Universal Fallback Catch-All Engine
+            return "🟢 **Oracle Wellness Check:** Good configuration to nurture your physical system. Excellent window for hydration planning, consuming whole grains, and maintaining structural nutrition consistency."
+
+    # Universal Fallback
     else:
         if is_good_tara:
-            return f"✨ **Oracle Verdict: GENERALLY APPROVED.** Your active birth star timing is currently protected and supportive ({tarabala['name']}). While the specific question requires your practical judgment, the cosmic background elements are structurally clear of immediate threat indexes today."
+            return f"✨ **Oracle Verdict: GENERALLY APPROVED.** Your active birth star timing is currently protected and supportive ({tarabala['name']}). Proceed with mindful attention to daily boundaries."
         else:
-            return f"⏳ **Oracle Verdict: CHOOSE DEFENSIVE DELAY.** Your active star profile is transiting a restrictive or high-friction phase ({tarabala['name']}). Classic Vedic planning recommends avoiding defining personal commitments or massive choices for the next 24 hours. Focus purely on routine execution behind the scenes."
+            return f"⏳ **Oracle Verdict: CHOOSE DEFENSIVE DELAY.** Your active star profile is transiting a restrictive phase ({tarabala['name']}). Classic Vedic planning recommends avoiding defining personal commitments for the next 24 hours."
 
 def get_advanced_predictions(day_name, status_str):
     if "Exceptional" in status_str or "Supreme" in status_str or "Success" in status_str:
@@ -232,9 +245,9 @@ if view_mode == "☀️ Daily Engine":
     st.markdown(f'<div style="background-color: {theme["bg"]}; border-left: 5px solid {theme["color"]}; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 24px; float: right;">{theme["emoji"]}</span><h3 style="margin: 0; color: {theme["color"]}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme["planet"].upper()}</h3><p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme["vibe"]}</p></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     
-    # NEWLY INJECTED: Interactive Cosmic Decision Oracle Module
+    # Cosmic Decision Oracle Module
     st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>🔮 Cosmic Decision Oracle</h2>", unsafe_allow_html=True)
-    user_q = st.text_input("Ask a question regarding your day:", placeholder="e.g., Should I buy a PC today?", key="oracle_query_input")
+    user_q = st.text_input("Ask a question regarding your day:", placeholder="e.g., Should I lend money today? / Urge help", key="oracle_query_input")
     
     if user_q:
         oracle_verdict = evaluate_cosmic_oracle(user_q, day_name, tarabala)
