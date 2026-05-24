@@ -91,4 +91,87 @@ def get_detailed_decision_matrix(day_name):
         "Tuesday": {"wealth": "❌ **Restriction:** Avoid signing major loan frameworks or lending capital.", "business": "🟢 **High Power:** Perfect for audits, technical execution, and operations maintenance.", "travel": "🟡 **Caution:** Keep transits brief and highly structured.", "health": "🟢 **Excellent:** High energy window. Ideal for medical adjustments.", "legal": "🟢 **Favorable:** Strong configuration for filing updates and formal contractual disputes."},
         "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for asset adjustments and checking account setups.", "business": "🟢 **Excellent:** Maximum commercial alignment for contract signing and marketing rollout.", "travel": "🟢 **Highly Favorable:** Top alignment for commercial logistics and inventory transit.", "health": "🟢 **Good:** Great day for clean eating and cardiovascular routines.", "legal": "🟢 **Favorable:** Ideal for registration filings and partnership reviews."},
         "Thursday": {"wealth": "🟢 **Supreme Alignment:** Premier window for mutual fund review, long-term asset positioning, and setting strategic investments.", "business": "🟢 **Supreme Alignment:** Perfect for high-level meetings, system design, and launching major expansion steps.", "travel": "🟢 **Favorable:** Supports executive or commercial transit.", "health": "🟢 **Good:** Highly favorable for beginning systematic dietary regimens.", "legal": "🟢 **Excellent:** Exceptional protection for regulatory compliance reviews."},
-        "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to heavy industrial stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing marketing, PR events, and UI/UX reviews.", "travel": "🟢
+        "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to heavy industrial stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing marketing, PR events, and UI/UX reviews.", "travel": "🟢 **Safe:** Smooth, stress-free travel profiles.", "health": "🟡 **Neutral:** Rest up and avoid heavy, dense meals.", "legal": "🟡 **Neutral:** Safe for standard document processing."},
+        "Saturday": {"wealth": "🟡 **Caution:** Avoid volatile trades. Favorable for physical assets or equipment purchases.", "business": "🟢 **Productive:** Lock down backend processing, data cleanups, and logistical maintenance.", "travel": "❌ **Avoid:** Postpone long personal journeys to bypass unexpected delays.", "health": "🟡 **Caution:** Watch joint strain. Excellent for deep rest cycles.", "legal": "🟡 **Neutral:** Slow movement; use strictly to review structural fine-print clauses."},
+        "Sunday": {"wealth": "🟢 **Favorable:** Perfect window for asset audits and long-term asset balancing.", "business": "🟢 **High Alignment:** Elite configuration for corporate structuring and launching upcoming workflows.", "travel": "🟢 **Good:** Energizing transit windows.", "health": "🟢 **Excellent:** Excellent vitality indices.", "legal": "🟢 **Favorable:** Auspicious for managing governmental licensing or certificates."}
+    }
+    return matrix.get(day_name, matrix["Sunday"])
+
+def get_hora_vibe(hora_planet):
+    vibes = {
+        "Jupiter": "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial actions, long-term investments, meeting mentors, and major decisions.",
+        "Mercury": "🧠 **Intellectual Hour (Highly Productive):** Prime for signing contracts, sending key updates, coding, and analytical reviews.",
+        "Venus": "🎨 **Creative Hour (Smooth):** Great for visual design, client relationship management, and personal comfort items.",
+        "Moon": "🌊 **Intuitive Hour (Fluid):** Ideal for team alignment, conceptual brainstorming, and liquid capital shifts.",
+        "Sun": "👑 **Authority Hour (Powerful):** Top configuration for leadership execution and connecting with executive decision-makers.",
+        "Mars": "⚡ **Aggressive Hour (Volatile):** Best for auditing bugs and immediate execution. **Avoid** taking new liabilities or initiating sensitive arguments.",
+        "Saturn": "⏳ **Delay Hour (Restrictive):** Focus purely on server maintenance, data archiving, and systemic admin processing. **Avoid** project kickoffs."
+    }
+    return vibes.get(hora_planet, "")
+
+def calculate_hora_sequence(day_name):
+    order = ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"]
+    day_lords = {"Sunday": "Sun", "Monday": "Moon", "Tuesday": "Mars", "Wednesday": "Mercury", "Thursday": "Jupiter", "Friday": "Venus", "Saturday": "Saturn"}
+    start_index = order.index(day_lords[day_name])
+    return [(f"{(6 + i) % 24:02d}:00 - {(7 + i) % 24:02d}:00", order[(start_index + i) % 7]) for i in range(24)]
+
+# Mobile UI Configuration
+st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered")
+
+st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
+st.caption(f"Lagna: Pisces | Birth Star: {MY_PROFILE['birth_nakshatra']} | Rashi: Gemini")
+
+target_date = st.date_input("Select Date", datetime.date.today())
+day_name = target_date.strftime("%A")
+
+theme = PLANET_THEMES[day_name]
+current_star, tarabala = get_live_nakshatra_and_tarabala(target_date)
+rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
+
+# Render: Day Influencer Card
+st.markdown(f"""
+<div style="background-color: {theme['bg']}; border-left: 5px solid {theme['color']}; padding: 15px; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
+    <span style="font-size: 24px; float: right;">{theme['emoji']}</span>
+    <h3 style="margin: 0; color: {theme['color']}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme['planet'].upper()}</h3>
+    <p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme['vibe']}</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Render: Live Star Strength Card (Tarabala)
+st.markdown(f"""
+<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
+    <span style="font-size: 18px; float: right;">✨</span>
+    <h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala['status']})</h3>
+    <p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala['name']}</p>
+    <p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala['vibe']}</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Render: Rahu Kaal Banner
+st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals, wire transfers, or asset commitments today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
+
+# Render: Decision Matrix
+st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
+decisions = get_detailed_decision_matrix(day_name)
+
+with st.expander("💰 Wealth & Investments", expanded=False): st.write(decisions["wealth"])
+with st.expander("💼 Business & Career", expanded=False): st.write(decisions["business"])
+with st.expander("✈️ Travel & Relocation", expanded=False): st.write(decisions["travel"])
+with st.expander("🏥 Health & Medical", expanded=False): st.write(decisions["health"])
+with st.expander("⚖️ Property & Legal", expanded=False): st.write(decisions["legal"])
+
+st.write("---")
+
+# Render: Hora Dropdown
+st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 10px; margin-bottom: 5px;'>⏰ Hourly Time Planner (Hora)</h2>", unsafe_allow_html=True)
+st.caption("Plan your specific execution windows throughout the day:")
+
+hora_list = calculate_hora_sequence(day_name)
+local_now = datetime.datetime.utcnow() + datetime.timedelta(hours=4)
+default_slot_index = (local_now.hour - 6) % 24
+
+dropdown_options = [f"{slot[0]} (Ruled by {slot[1]})" for slot in hora_list]
+selected_slot = st.selectbox("Choose a time block to inspect:", options=dropdown_options, index=default_slot_index)
+
+chosen_planet = selected_slot.split("Ruled by ")[1].replace(")", "")
+st.info(get_hora_vibe(chosen_planet))
