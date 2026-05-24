@@ -40,16 +40,15 @@ PLANET_THEMES = {
 }
 
 DAILY_STYLE_LOOKUP = {
-    "Monday": {"color": "White, Silver, or Cream", "grooming": "✅ Safe for hair & nail cutting."},
-    "Tuesday": {"color": "Bright Red or Coral", "grooming": "❌ Avoid cutting hair or nails today (Mars energy)."},
-    "Wednesday": {"color": "Green or Pastel Shades", "grooming": "✅ Excellent day for grooming and personal care."},
-    "Thursday": {"color": "Golden Yellow or Saffron", "grooming": "⚠️ Avoid major haircuts to preserve Jupiter energy."},
-    "Friday": {"color": "Clean White or Off-White", "grooming": "✅ Perfect for aesthetic grooming and spa routines."},
-    "Saturday": {"color": "Black, Dark Blue, or Charcoal", "grooming": "❌ Strictly avoid hair and nail cutting today."},
-    "Sunday": {"color": "Orange, Ruby Red, or Gold", "grooming": "Neutral day. Keep grooming minimal."}
+    "Monday": {"color": "White, Silver, or Cream", "grooming": "✅ Safe for hair & nail cutting.", "task": "Routed excess funds toward liquid capital holdings."},
+    "Tuesday": {"color": "Bright Red or Coral", "grooming": "❌ Avoid cutting hair or nails today (Mars energy).", "task": "Held firm boundaries against issuing new loans or debt liabilities."},
+    "Wednesday": {"color": "Green or Pastel Shades", "grooming": "✅ Excellent day for grooming and personal care.", "task": "Audited active commercial contract terms or asset accounts."},
+    "Thursday": {"color": "Golden Yellow or Saffron", "grooming": "⚠️ Avoid major haircuts to preserve Jupiter energy.", "task": "Verified allocation targets for compounding long-term assets (SIPs/ETFs)."},
+    "Friday": {"color": "Clean White or Off-White", "grooming": "✅ Perfect for aesthetic grooming and spa routines.", "task": "Reviewed frontend performance metrics or creative UI adjustments."},
+    "Saturday": {"color": "Black, Dark Blue, or Charcoal", "grooming": "❌ Strictly avoid hair and nail cutting today.", "task": "Dedicated execution strictly to structural backend cleanup or logistics data."},
+    "Sunday": {"color": "Orange, Ruby Red, or Gold", "grooming": "Neutral day. Keep grooming minimal.", "task": "Completed an audit on asset balances and configured the upcoming weekly goals."}
 }
 
-# Long-Range Macro Architecture tailored to Pisces Lagna / Gemini Rashi
 MACRO_DATA = {
     "Weekly": {
         "job": {"good": "Strong communication surge early in the week; excellent for pitches, team syncs, and client updates.", "bad": "Friction during backend data updates mid-week. Keep file logs clean and backup assets."},
@@ -142,7 +141,7 @@ st.set_page_config(page_title="Cosmic Guide", page_icon="🌙", layout="centered
 st.markdown("<h1 style='font-size: 26px; font-weight: bold; margin-bottom: 0px;'>🔱 My Daily Cosmic Guide</h1>", unsafe_allow_html=True)
 st.caption("Lagna: Pisces | Birth Star: Ardra | Rashi: Gemini")
 
-# Top Level Toggle Navigation Bar for Mobile Scannability
+# Top Level Toggle Navigation Bar
 view_mode = st.radio("Select View Mode:", ["☀️ Daily Engine", "🌌 Macro Horizons"], horizontal=True)
 
 st.write("---")
@@ -172,6 +171,29 @@ if view_mode == "☀️ Daily Engine":
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
 
+    # INTERACTIVE CHECKLIST SCORECARD MODULE
+    st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>📊 Daily Alignment Scorecard</h2>", unsafe_allow_html=True)
+    
+    # Generate unique key references per date to prevent state crossover
+    d_key = target_date.strftime("%Y%m%d")
+    
+    c1 = st.checkbox(f"Wore matching apparel frequencies ({style_info['color']})", key=f"c1_{d_key}")
+    c2 = st.checkbox(f"Complied with daily personal care directives ({style_info['grooming'].split('.')[0]})", key=f"c2_{d_key}")
+    c3 = st.checkbox(f"Executed specific core asset mandate: {style_info['task']}", key=f"c3_{d_key}")
+    c4 = st.checkbox(f"Safely circumnavigated Dubai Rahu Kaal window boundary limits", key=f"c4_{d_key}")
+    
+    # Calculate alignment score percentage
+    completed = sum([c1, c2, c3, c4])
+    score_pct = int((completed / 4) * 100)
+    
+    st.progress(completed / 4)
+    if score_pct == 100:
+        st.success("🏆 **Flawless Harmonization!** You are completely aligned with the planetary currents today.")
+    else:
+        st.caption(f"Current alignment score index: **{score_pct}%**")
+
+    st.write("---")
+
     st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
     decisions = get_detailed_decision_matrix(day_name)
 
@@ -195,8 +217,6 @@ else:
     horizon = st.selectbox("Choose Time Horizon Window:", ["Weekly", "Monthly", "Quarterly", "6 Months", "Yearly"])
     
     data = MACRO_DATA[horizon]
-    
-    # Standard, structural card-style matrix mapping sectors to clear positive and constraint bars
     sectors = [
         {"name": "💼 Job & Career", "key": "job"},
         {"name": "💰 Finance & Wealth", "key": "finance"},
