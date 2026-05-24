@@ -39,7 +39,7 @@ day_name = target_date.strftime("%A")
 
 day_advice = get_daily_advice(day_name)
 
-st.subheader(f"📅 Blueprint for {day_name}")
+st.subheader(f"✨ Blueprint for {day_name}")
 st.write("---")
 
 # Clean, scannable display boxes
