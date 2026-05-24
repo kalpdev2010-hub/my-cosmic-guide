@@ -18,15 +18,15 @@ NAKSHATRAS = [
 ]
 
 TARABALA_MATRIX = {
-    1: {"name": "Janma Tara (Volatile)", "status": "❌ Avoid", "vibe": "Focus on routine care; avoid major physical operations or high-stakes initiations."},
-    2: {"name": "Sampat Tara (Prosperous)", "status": "🟢 Exceptional", "vibe": "Elite alignment for wealth generation, asset purchases, and financial trading."},
-    3: {"name": "Vipat Tara (High Risk)", "status": "❌ Critical Alert", "vibe": "High risk of sudden operational setbacks. Postpone contract signatures."},
-    4: {"name": "Kshema Tara (Protected)", "status": "🟢 Highly Secure", "vibe": "Safe, shielded window. Excellent for logistical planning and travel execution."},
+    1: {"name": "Janma Tara (Volatile)", "status": "❌ Avoid", "vibe": "Focus on routine care; avoid major physical operations or high-stakes personal initiations."},
+    2: {"name": "Sampat Tara (Prosperous)", "status": "🟢 Exceptional", "vibe": "Elite alignment for wealth generation, asset purchases, and financial growth."},
+    3: {"name": "Vipat Tara (High Risk)", "status": "❌ Critical Alert", "vibe": "High risk of sudden operational setbacks. Postpone signing important personal contracts."},
+    4: {"name": "Kshema Tara (Protected)", "status": "🟢 Highly Secure", "vibe": "Safe, shielded window. Excellent for logistical planning and personal travel execution."},
     5: {"name": "Pratyak Tara (Obstacles)", "status": "❌ Minor Delays", "vibe": "Expect unexpected administrative friction. Double-check fine print details."},
-    6: {"name": "Sadhana Tara (Success)", "status": "🟢 Elite Success", "vibe": "Outstanding frequency for closing sales and launching code upgrades."},
-    7: {"name": "Naidhana Tara (Terminal)", "status": "❌ Deep Restriction", "vibe": "Strict boundary control needed. Postpone any high-stakes transactions."},
-    8: {"name": "Mitra Tara (Harmonious)", "status": "🟢 Very Favorable", "vibe": "Highly supportive for strategic meetings, mediation, and client relationship upgrades."},
-    9: {"name": "Param Mitra Tara (Supreme)", "status": "👑 Maximum Alignment", "vibe": "Flawless astronomical window for securing lifetime business partnerships."}
+    6: {"name": "Sadhana Tara (Success)", "status": "🟢 Elite Success", "vibe": "Outstanding frequency for achieving workplace targets and personal goals."},
+    7: {"name": "Naidhana Tara (Terminal)", "status": "❌ Deep Restriction", "vibe": "Strict personal boundary control needed. Postpone high-stakes commitments."},
+    8: {"name": "Mitra Tara (Harmonious)", "status": "🟢 Very Favorable", "vibe": "Highly supportive for professional discussions, relationship upgrades, and collaboration."},
+    9: {"name": "Param Mitra Tara (Supreme)", "status": "👑 Maximum Alignment", "vibe": "Flawless astronomical window for securing lifetime professional alliances."}
 }
 
 PLANET_THEMES = {
@@ -40,45 +40,45 @@ PLANET_THEMES = {
 }
 
 DAILY_STYLE_LOOKUP = {
-    "Monday": {"color": "White, Silver, or Cream", "grooming": "✅ Safe for hair & nail cutting.", "task": "Routed excess funds toward liquid capital holdings."},
-    "Tuesday": {"color": "Bright Red or Coral", "grooming": "❌ Avoid cutting hair or nails today (Mars energy).", "task": "Held firm boundaries against issuing new loans or debt liabilities."},
-    "Wednesday": {"color": "Green or Pastel Shades", "grooming": "✅ Excellent day for grooming and personal care.", "task": "Audited active commercial contract terms or asset accounts."},
+    "Monday": {"color": "White, Silver, or Cream", "grooming": "✅ Safe for hair & nail cutting.", "task": "Routed excess personal funds toward liquid capital holdings."},
+    "Tuesday": {"color": "Bright Red or Coral", "grooming": "❌ Avoid cutting hair or nails today (Mars energy).", "task": "Held firm boundaries against taking on new personal liabilities or debts."},
+    "Wednesday": {"color": "Green or Pastel Shades", "grooming": "✅ Excellent day for grooming and personal care.", "task": "Audited active workplace task lists, schedules, or personal asset accounts."},
     "Thursday": {"color": "Golden Yellow or Saffron", "grooming": "⚠️ Avoid major haircuts to preserve Jupiter energy.", "task": "Verified allocation targets for compounding long-term assets (SIPs/ETFs)."},
-    "Friday": {"color": "Clean White or Off-White", "grooming": "✅ Perfect for aesthetic grooming and spa routines.", "task": "Reviewed frontend performance metrics or creative UI adjustments."},
-    "Saturday": {"color": "Black, Dark Blue, or Charcoal", "grooming": "❌ Strictly avoid hair and nail cutting today.", "task": "Dedicated execution strictly to structural backend cleanup or logistics data."},
-    "Sunday": {"color": "Orange, Ruby Red, or Gold", "grooming": "Neutral day. Keep grooming minimal.", "task": "Completed an audit on asset balances and configured the upcoming weekly goals."}
+    "Friday": {"color": "Clean White or Off-White", "grooming": "✅ Perfect for aesthetic grooming and spa routines.", "task": "Reviewed personal workplace performance metrics or professional targets."},
+    "Saturday": {"color": "Black, Dark Blue, or Charcoal", "grooming": "❌ Strictly avoid hair and nail cutting today.", "task": "Dedicated execution strictly to structural organizing, desk cleanup, or personal administration."},
+    "Sunday": {"color": "Orange, Ruby Red, or Gold", "grooming": "Neutral day. Keep grooming minimal.", "task": "Completed an audit on personal savings and configured the upcoming weekly goals."}
 }
 
 MACRO_DATA = {
     "Weekly": {
-        "job": {"good": "Strong communication surge early in the week; excellent for pitches, team syncs, and client updates.", "bad": "Friction during backend data updates mid-week. Keep file logs clean and backup assets."},
-        "finance": {"good": "Liquid capital flow is stable; good for handling immediate operational invoices.", "bad": "Avoid quick retail overspending or speculative trading on Thursday afternoon."},
-        "health": {"good": "High mental clarity and focus profiles for strategic tasks.", "bad": "Minor sleep inconsistencies. Reduce late-night display usage."},
-        "relationship": {"good": "Supportive configurations for immediate professional and creative partnerships.", "bad": "Miscommunications possible under pressure. Verify instructions clearly."}
+        "job": {"good": "Strong communication surge early in the week; excellent for workplace discussions, scheduling, and presenting ideas.", "bad": "Friction during routine data management mid-week. Keep task logs clear and organized."},
+        "finance": {"good": "Liquid capital flow is stable; good for handling immediate personal expenses or routine bills.", "bad": "Avoid impulsive retail spending or fast financial changes on Thursday afternoon."},
+        "health": {"good": "High mental clarity and focus profiles for demanding workplace responsibilities.", "bad": "Minor sleep inconsistencies. Reduce late-night mobile screen usage."},
+        "relationship": {"good": "Supportive configurations for immediate professional collaboration and workplace harmony.", "bad": "Miscommunications possible under professional pressure. Verify work instructions clearly."}
     },
     "Monthly": {
-        "job": {"good": "Excellent phase for updating digital frameworks, frontend optimization, and performance tracking.", "bad": "Expect short-term delays from external vendors or regulatory steps."},
-        "finance": {"good": "Strong returns on systemic investments (SIPs/ETFs) and structured savings fields.", "bad": "Check auto-renewals and hidden software subscription leakages."},
-        "health": {"good": "Ideal month to establish solid nutritional and cardiovascular discipline.", "bad": "High mental load can induce eye strain or posture fatigue. Set screen breaks."},
-        "relationship": {"good": "Great for collaborative work configurations and professional network visibility.", "bad": "Keep workspace discussions clear and separate from emotional assumptions."}
+        "job": {"good": "Excellent phase for optimizing your daily workflow, showcasing job performance, and tracking productivity.", "bad": "Expect short-term administrative delays from external office systems or processing queues."},
+        "finance": {"good": "Strong returns on systemic personal investments (SIPs/ETFs) and structured savings fields.", "bad": "Check auto-renewals on streaming accounts or hidden digital subscription leaks."},
+        "health": {"good": "Ideal month to establish solid nutritional habits and cardiovascular exercise discipline.", "bad": "High mental workload can induce eye strain or posture fatigue. Take routine desk breaks."},
+        "relationship": {"good": "Great for professional networking, office rapport, and visibility within your company.", "bad": "Keep workspace discussions objective and separate from personal feelings."}
     },
     "Quarterly": {
-        "job": {"good": "Major expansion capabilities. Excellent window for infrastructure upgrades and launching products.", "bad": "High competitive pressure in the market requires tight data security protocols."},
-        "finance": {"good": "Opportunities to structure long-term commercial assets or capitalize on older investments.", "bad": "Avoid over-leveraging on fresh capital loans or massive commercial liabilities."},
-        "health": {"good": "Vibrant physical recovery phases and strength gains under structured routines.", "bad": "Watch out for seasonal shifts causing digestive slowing or minor joint stiffness."},
-        "relationship": {"good": "Alignments favor deep, long-range planning with primary key partners.", "bad": "Ensure legal agreements or divisions of responsibilities are explicit."}
+        "job": {"good": "Major professional capabilities. Excellent window for taking on workplace leadership roles or managing large projects.", "bad": "High task volume at your job requires sharp time-management and strict scheduling protocols."},
+        "finance": {"good": "Opportunities to structure long-term personal assets or rebalance older investments.", "bad": "Avoid over-leveraging on unnecessary fresh personal loans or financial liabilities."},
+        "health": {"good": "Vibrant physical recovery phases and strength gains under a structured wellness routine.", "bad": "Watch out for seasonal shifts causing minor digestive slowing or joint stiffness."},
+        "relationship": {"good": "Alignments favor deep, long-range planning with primary trusted partners.", "bad": "Ensure shared financial or family responsibilities are explicitly discussed."}
     },
     "6 Months": {
-        "job": {"good": "Transit support favors massive professional evolution, systemic restructuring, and scaling platforms.", "bad": "Hidden internal friction from old operational backlogs. Resolve database technical debt early."},
-        "finance": {"good": "Substantial foundational asset growth. Excellent for structural corporate planning.", "bad": "Rahu/Ketu transits require total caution regarding opaque contracts or non-verified capital pools."},
-        "health": {"good": "High nervous system resilience and stamina recovery windows.", "bad": "Do not skip regular health checkpoints or stress auditing metrics."},
-        "relationship": {"good": "Excellent period to solidify your inner circle and eliminate distracting associations.", "bad": "Opaque communication blocks can create minor trust delays if not handled directly."}
+        "job": {"good": "Transit support favors massive professional growth, expanding your career authority, and mastering workplace skills.", "bad": "Hidden stress from older, pending work assignments. Resolve administrative backlogs early."},
+        "finance": {"good": "Substantial foundational savings growth. Excellent for structural financial planning.", "bad": "Rahu/Ketu transits require total caution regarding ambiguous financial schemes or non-verified funds."},
+        "health": {"good": "High nervous system resilience and stamina recovery windows.", "bad": "Do not skip regular physical health checkups or personal stress auditing."},
+        "relationship": {"good": "Excellent period to solidify your inner circle and eliminate distracting, draining associations.", "bad": "Opaque communication can create minor misunderstandings if not cleared up immediately."}
     },
     "Yearly": {
-        "job": {"good": "Foundational transit window for establishing market dominance, authority, and high-tier licensing upgrades.", "bad": "Saturn in the house of expenditure demands meticulous attention to commercial overhead costs."},
-        "finance": {"good": "Major accumulation pathways open through disciplined, compounding asset vehicles.", "bad": "Strictly ban speculative or high-volatility financial exposure to preserve core wealth blocks."},
-        "health": {"good": "Strong physical alignment when backed by long-term wellness frameworks.", "bad": "Prone to burnout from over-working. Enforce strict, non-negotiable downtime boundaries."},
-        "relationship": {"good": "Major stabilizing energy for lifelong personal and professional bonds.", "bad": "Avoid business partnerships where roles and fiscal splits are not audited by a third party."}
+        "job": {"good": "Foundational transit window for establishing career stability, workplace authority, and professional respect.", "bad": "Saturn in your house of expenditure demands meticulous attention to your personal living overhead costs."},
+        "finance": {"good": "Major accumulation pathways open through disciplined, compounding asset vehicles.", "bad": "Strictly ban high-volatility financial exposure to preserve your core wealth blocks."},
+        "health": {"good": "Strong physical alignment when backed by long-term wellness frameworks.", "bad": "Prone to burnout from working long hours. Enforce strict, non-negotiable downtime boundaries."},
+        "relationship": {"good": "Major stabilizing energy for lifelong personal and family bonds.", "bad": "Avoid complex personal financial loans where boundaries and repayments are not documented."}
     }
 }
 
@@ -97,25 +97,25 @@ def get_live_nakshatra_and_tarabala(target_date):
     star_distance = (curr_idx - birth_idx) % 27
     return current_star, TARABALA_MATRIX[(star_distance % 9) + 1]
 
-# Advanced Multi-Sector Target Prediction Engine
+# Advanced Multi-Sector Target Prediction Engine (Refined for Job/Personal focus)
 def get_advanced_predictions(day_name, status_str):
     if "Exceptional" in status_str or "Supreme" in status_str or "Success" in status_str:
         return {
-            "career": "🟢 **High Momentum:** Saturn transiting 10th from your Moon rewards precision logistics. Exalted Jupiter triggers clean strategic clarity. Execute platforms upgrades, update theme code structures, or deploy marketing modifications during peak hours.",
-            "finance": "🟢 **Compounding Peak:** Excellent alignment for tracking Systematic Investment Plans (SIPs) or long-term fund positioning. A supportive window to audit structural cash reserves or route incoming revenue safely.",
-            "health": "🟢 **Vital Recovery:** Jupiter casts its protective 9th aspect back onto your physical body (1st house). Immune vectors are boosted. High physical endurance window; execute demanding operational workflows confidently."
+            "career": "🟢 **High Momentum:** Saturn transiting 10th from your Moon rewards workplace precision and discipline. Exalted Jupiter triggers clean professional clarity. Execute complex assignments, optimize your task schedules, or tackle critical workplace duties during peak hours.",
+            "finance": "🟢 **Compounding Peak:** Excellent alignment for tracking personal Systematic Investment Plans (SIPs) or long-term fund positioning. A supportive window to audit personal savings or route income safely.",
+            "health": "🟢 **Vital Recovery:** Jupiter casts its protective 9th aspect back onto your body (1st house). Immune vectors are boosted. High physical endurance window; execute demanding daily workflows confidently."
         }
     elif "Avoid" in status_str or "Alert" in status_str or "Restriction" in status_str:
         return {
-            "career": "❌ **Consolidation Required:** Ambient friction could cause server delays or communicative bottlenecks with external distribution setups. Dedicate energy strictly to resolving technical debt, archiving old files, or sorting inventory frameworks.",
-            "finance": "❌ **Defensive Posture:** Keep core capital reserves insulated. Postpone heavy initial investments into completely unverified commercial vendor frameworks or launching complex structural debts today.",
-            "health": "⚠️ **Energy Drain Warning:** Saturn hovering in your 1st house can trigger physical fatigue or screen eye strain under heavy pressure. Set mandatory screen breaks and enforce firm boundary lines around sleep."
+            "career": "❌ **Consolidation Required:** Ambient friction could cause minor communication delays or administrative bottlenecks in daily office routines. Dedicate energy strictly to resolving pending task backlogs or organizing your personal schedule.",
+            "finance": "❌ **Defensive Posture:** Keep core personal capital reserves insulated. Postpone heavy initial investments into unverified luxury items or taking on fresh personal financial obligations today.",
+            "health": "⚠️ **Energy Drain Warning:** Saturn hovering in your 1st house can trigger physical fatigue or digital eye strain under high pressure. Set mandatory desk breaks and enforce firm boundaries around sleep."
         }
     else:
         return {
-            "career": "🟡 **Linear Progression:** Stable parameters for processing standard e-commerce tasks, coordinating client reports, and checking frontend analytics. Intuition is well-balanced for long-range optimization planning.",
-            "finance": "🟡 **Stable Balance:** Safe configuration for micro-budget adjustments or routine banking transfers. Maintain your default compounding strategies; avoid quick high-risk retail speculation positions.",
-            "health": "🟡 **Grounded Vitality:** Standard respiratory and nervous system stability. Keep posture aligned during long table sessions and maintain your standard hydration index."
+            "career": "🟡 **Linear Progression:** Stable parameters for processing standard job tasks, coordinating with professional colleagues, and reviewing daily outputs. Focus is well-aligned for steady, reliable execution.",
+            "finance": "🟡 **Stable Balance:** Safe configuration for micro-budget adjustments or routine banking transfers. Maintain your default compounding strategies; avoid high-risk financial speculation.",
+            "health": "🟡 **Grounded Vitality:** Standard physical and nervous system stability. Keep posture aligned during long desk sessions and maintain your standard hydration index."
         }
 
 def get_dubai_rahu_kaal(day_name, target_date):
@@ -136,18 +136,18 @@ def get_dubai_rahu_kaal(day_name, target_date):
 
 def get_detailed_decision_matrix(day_name):
     matrix = {
-        "Monday": {"wealth": "🟢 **Good:** Micro-investments or routing funds to liquid assets. Avoid risky speculative trading.", "business": "🟢 **Favorable:** Great for team coordination and creative brainstorming. Trust your gut.", "travel": "🟢 **Safe:** Peaceful short-distance transits.", "health": "🟡 **Neutral:** Prioritize hydration and rest.", "legal": "❌ **Avoid:** Do not execute adversarial legal settlements today."},
-        "Tuesday": {"wealth": "❌ **Restriction:** Avoid signing major loan frameworks or lending capital.", "business": "🟢 **High Power:** Perfect for audits, technical execution, and operations maintenance.", "travel": "🟡 **Caution:** Keep transits brief and highly structured.", "health": "🟢 **Excellent:** High energy window. Ideal for medical adjustments.", "legal": "🟢 **Favorable:** Strong configuration for filing updates and formal contractual disputes."},
-        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for asset adjustments and checking account setups.", "business": "🟢 **Excellent:** Maximum commercial alignment for contract signing and marketing rollout.", "travel": "🟢 **Highly Favorable:** Top alignment for commercial logistics and inventory transit.", "health": "🟢 **Good:** Great day for neurological wellness, yoga, breathing exercises, and dietary adjustments.", "legal": "🟢 **Favorable:** Ideal for registration filings and partnership reviews."},
-        "Thursday": {"wealth": "🟢 **Supreme Alignment:** Premier window for mutual fund review, long-term asset positioning, and setting strategic investments.", "business": "🟢 **Supreme Alignment:** Perfect for high-level meetings, system design, and launching major expansion steps.", "travel": "🟢 **Favorable:** Supports executive or commercial transit.", "health": "🟢 **Good:** Highly favorable for beginning systematic dietary regimens.", "legal": "🟢 **Excellent:** Exceptional protection for regulatory compliance reviews."},
-        "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to heavy industrial stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing marketing, PR events, and UI/UX reviews.", "travel": "🟢 **Safe:** Smooth, stress-free travel profiles.", "health": "🟡 **Neutral:** Rest up and avoid heavy, dense meals.", "legal": "🟡 **Neutral:** Safe for standard document processing."},
-        "Saturday": {"wealth": "🟡 **Caution:** Avoid volatile trades. Favorable for physical assets or equipment purchases.", "business": "🟢 **Productive:** Lock down backend processing, data cleanups, and logistical maintenance.", "travel": "❌ **Avoid:** Postpone long personal journeys to bypass unexpected delays.", "health": "🟡 **Caution:** Watch joint strain. Excellent for deep rest cycles.", "legal": "🟡 **Neutral:** Slow movement; use strictly to review structural fine-print clauses."},
-        "Sunday": {"wealth": "🟢 **Favorable:** Perfect window for asset audits and long-term asset balancing.", "business": "🟢 **High Alignment:** Elite configuration for corporate structuring and launching upcoming workflows.", "travel": "🟢 **Good:** Permanent, energetic transit windows.", "health": "🟢 **Excellent:** Excellent vitality indices.", "legal": "🟢 **Favorable:** Auspicious for managing governmental licensing or certificates."}
+        "Monday": {"wealth": "🟢 **Good:** Micro-investments or routing funds to liquid assets. Avoid risky speculative trading.", "business": "🟢 **Favorable:** Great for office teamwork, professional coordination, and clear workplace communication.", "travel": "🟢 **Safe:** Peaceful short-distance transits or commutes.", "health": "🟡 **Neutral:** Prioritize hydration and rest.", "legal": "❌ **Avoid:** Do not execute adversarial personal legal agreements today."},
+        "Tuesday": {"wealth": "❌ **Restriction:** Avoid signing major personal loan frameworks or lending capital.", "business": "🟢 **High Power:** Perfect for organizing schedules, handling detailed reports, and executing pending job tasks.", "travel": "🟡 **Caution:** Keep transits brief and highly structured.", "health": "🟢 **Excellent:** High energy window. Ideal for starting workout variations or physical adjustments.", "legal": "🟢 **Favorable:** Strong configuration for filing updates and managing documentation."},
+        "Wednesday": {"wealth": "🟢 **Auspicious:** Excellent for personal asset adjustments and reviewing account configurations.", "business": "🟢 **Excellent:** Maximum professional alignment for completing key assignments, sending important updates, and organizing tasks.", "travel": "🟢 **Highly Favorable:** Top alignment for professional logistics and work-related transits.", "health": "🟢 **Good:** Great day for clean eating and cardiovascular routines.", "legal": "🟢 **Favorable:** Ideal for document registration filings and contract reviews."},
+        "Thursday": {"wealth": "🟢 **Supreme Alignment:** Premier window for mutual fund review, long-term asset positioning, and setting strategic personal investments.", "business": "🟢 **Supreme Alignment:** Perfect for high-level career planning, aligning with professional mentors, and focusing on job growth.", "travel": "🟢 **Favorable:** Supports executive or career-related transit.", "health": "🟢 **Good:** Highly favorable for beginning systematic dietary regimens.", "legal": "🟢 **Excellent:** Exceptional protection for regulatory compliance reviews."},
+        "Friday": {"wealth": "🟡 **Neutral:** Safe for regular budgeting; avoid allocating massive capital to high-risk stocks.", "business": "🟢 **Favorable:** Exceptional for front-facing collaboration, presentation reviews, and design tasks at your job.", "travel": "🟢 **Safe:** Smooth, stress-free travel profiles.", "health": "🟡 **Neutral:** Rest up and avoid heavy, dense meals.", "legal": "🟡 **Neutral:** Safe for standard document processing."},
+        "Saturday": {"wealth": "🟡 **Caution:** Avoid volatile trades. Favorable for purchasing durable hard assets or necessary equipment.", "business": "🟢 **Productive:** Lock down backend documentation, personal schedule organization, and clearing administrative logs.", "travel": "❌ **Avoid:** Postpone long personal journeys to bypass unexpected delays.", "health": "🟡 **Caution:** Watch joint strain. Excellent for deep rest cycles.", "legal": "🟡 **Neutral:** Slow movement; use strictly to review structural fine-print clauses."},
+        "Sunday": {"wealth": "🟢 **Favorable:** Perfect window for personal asset audits and long-term asset balancing.", "business": "🟢 **High Alignment:** Elite configuration for outlining upcoming workplace goals and structuring your personal task list.", "travel": "🟢 **Good:** Permanent, energetic transit windows.", "health": "🟢 **Excellent:** Excellent vitality indices.", "legal": "🟢 **Favorable:** Auspicious for managing personal licensing or certificates."}
     }
     return matrix.get(day_name, matrix["Sunday"])
 
 def get_hora_vibe(hora_planet):
-    vibes = {"Jupiter": "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial actions, long-term investments, meeting mentors, and major decisions.", "Mercury": "🧠 **Intellectual Hour (Highly Productive):** Prime for signing contracts, sending key updates, coding, and analytical reviews.", "Venus": "🎨 **Creative Hour (Smooth):** Great for visual design, client relationship management, and personal comfort items.", "Moon": "🌊 **Intuitive Hour (Fluid):** Ideal for team alignment, conceptual brainstorming, and liquid capital shifts.", "Sun": "👑 **Authority Hour (Powerful):** Top configuration for leadership execution and connecting with executive decision-makers.", "Mars": "⚡ **Aggressive Hour (Volatile):** Best for auditing bugs and immediate execution. **Avoid** taking new liabilities or initiating sensitive arguments.", "Saturn": "⏳ **Delay Hour (Restrictive):** Focus purely on server maintenance, data archiving, and systemic admin processing. **Avoid** project kickoffs."}
+    vibes = {"Jupiter": "🌟 **Auspicious Hour (Supreme):** Perfect for high-value financial actions, long-term investments, meeting mentors, and major decisions.", "Mercury": "🧠 **Intellectual Hour (Highly Productive):** Prime for organizing schedules, sending key updates, coding, and analytical reviews.", "Venus": "🎨 **Creative Hour (Smooth):** Great for visual layout, professional communication, and personal comfort items.", "Moon": "🌊 **Intuitive Hour (Fluid):** Ideal for team coordination, conceptual brainstorming, and managing personal cash flows.", "Sun": "👑 **Authority Hour (Powerful):** Top configuration for leadership execution and connecting with executive decision-makers.", "Mars": "⚡ **Aggressive Hour (Volatile):** Best for clearing pending backlogs and immediate execution. **Avoid** taking new liabilities or initiating sensitive arguments.", "Saturn": "⏳ **Delay Hour (Restrictive):** Focus purely on routine filing, sorting archives, and systemic admin processing. **Avoid** project kickoffs."}
     return vibes.get(hora_planet, "")
 
 def calculate_hora_sequence(day_name):
@@ -195,19 +195,17 @@ if view_mode == "☀️ Daily Engine":
     current_star, tarabala = get_live_nakshatra_and_tarabala(target_date)
     rahu_start, rahu_end = get_dubai_rahu_kaal(day_name, target_date)
     
-    # Generate Advanced Multi-Sector Predictions
     preds = get_advanced_predictions(day_name, tarabala["status"])
 
     st.markdown(f'<div style="background-color: {theme["bg"]}; border-left: 5px solid {theme["color"]}; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 24px; float: right;">{theme["emoji"]}</span><h3 style="margin: 0; color: {theme["color"]}; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">DAY INFLUENCER: {theme["planet"].upper()}</h3><p style="margin: 5px 0 0 0; color: #ffffff; font-size: 13px; font-style: italic; opacity: 0.9;">{theme["vibe"]}</p></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background-color: #0b1511; border-left: 5px solid #00FF7F; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);"><span style="font-size: 18px; float: right;">✨</span><h3 style="margin: 0; color: #00FF7F; font-size: 14px; font-weight: bold;">STAR TIMING: {current_star.upper()} ({tarabala["status"]})</h3><p style="margin: 3px 0 0 0; color: #ffffff; font-size: 13px; font-weight: bold;">{tarabala["name"]}</p><p style="margin: 3px 0 0 0; color: #cccccc; font-size: 12px; opacity: 0.85;">{tarabala["vibe"]}</p></div>', unsafe_allow_html=True)
     
-    # RESTORED / UPGRADED: Unified Gochar Target Predictions Section
     st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>🔮 Gochar Forecast (Predictions)</h2>", unsafe_allow_html=True)
-    with st.expander("💼 Career Prediction", expanded=True):
+    with st.expander("💼 Job & Career Prediction", expanded=True):
         st.write(preds["career"])
-    with st.expander("💰 Finance Prediction", expanded=False):
+    with st.expander("💰 Personal Finance Prediction", expanded=False):
         st.write(preds["finance"])
-    with st.expander("🏥 Health Prediction", expanded=False):
+    with st.expander("🏥 Personal Health Prediction", expanded=False):
         st.write(preds["health"])
         
     st.error(f"🛑 **Critical Restriction Window (Dubai):** Avoid executing high-stakes business deals today during **Rahu Kaal: {rahu_start} - {rahu_end}**.")
@@ -238,7 +236,7 @@ if view_mode == "☀️ Daily Engine":
     with st.expander("🎨 Styling & Clothing Color", expanded=False): st.info(f"**Recommended Colors for {day_name}:**\n\n{style_info['color']}")
     with st.expander("💇‍♂️ Personal Care & Grooming", expanded=False): st.warning(f"**Grooming Directives:**\n\n{style_info['grooming']}")
     with st.expander("💰 Wealth & Investments", expanded=False): st.write(decisions["wealth"])
-    with st.expander("💼 Business & Career", expanded=False): st.write(decisions["business"])
+    with st.expander("💼 Job & Career Focus", expanded=False): st.write(decisions["business"])
     with st.expander("✈️ Travel & Relocation", expanded=False): st.write(decisions["travel"])
     with st.expander("🏥 Health & Medical", expanded=False): st.write(decisions["health"])
     with st.expander("⚖️ Property & Legal", expanded=False): st.write(decisions["legal"])
