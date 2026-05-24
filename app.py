@@ -113,8 +113,8 @@ st.caption(f"Lagna: {MY_PROFILE['ascendant_lagna']} | Nakshatra: {MY_PROFILE['bi
 target_date = st.date_input("Select Date", datetime.date.today())
 day_name = target_date.strftime("%A")
 
-# Render Section 1: Major Day Sectors
-st.subheader(f"✨ Decision Matrix for {day_name}")
+# Fix: Only this specific subheading line font size is reduced to 18px to ensure it fits perfectly in 1 line
+st.markdown(f"<h2 style='font-size: 18px; font-weight: bold; margin-top: 15px; margin-bottom: 5px;'>✨ Decision Matrix for {day_name}</h2>", unsafe_allow_html=True)
 decisions = get_detailed_decision_matrix(day_name)
 
 with st.expander("💰 Wealth & Investments", expanded=False):
@@ -130,29 +130,23 @@ with st.expander("⚖️ Property & Legal", expanded=False):
 
 st.write("---")
 
-# Render Section 2: Hourly Micro-Planner with Smart Defaulting
-st.subheader("⏰ Hourly Time Planner (Hora)")
+st.markdown("<h2 style='font-size: 18px; font-weight: bold; margin-top: 10px; margin-bottom: 5px;'>⏰ Hourly Time Planner (Hora)</h2>", unsafe_allow_html=True)
 st.caption("Plan your specific execution windows throughout the day:")
 
 hora_list = calculate_hora_sequence(day_name)
 
-# Dynamic local time calculation (UTC + 4 hours for local comfort)
+# Dynamic local time calculation (UTC + 4 hours for Dubai local context)
 local_now = datetime.datetime.utcnow() + datetime.timedelta(hours=4)
 current_hour = local_now.hour
 
-# Match the current system hour to the correct list slot index
 default_slot_index = (current_hour - 6) % 24
-
-# Set up dropdown options list
 dropdown_options = [f"{slot[0]} (Ruled by {slot[1]})" for slot in hora_list]
 
-# Dropdown displays current hour by default using index parameter
 selected_slot = st.selectbox(
     "Choose a time block to inspect:",
     options=dropdown_options,
     index=default_slot_index
 )
 
-# Extract planet name from selection to show rule set
 chosen_planet = selected_slot.split("Ruled by ")[1].replace(")", "")
 st.info(get_hora_vibe(chosen_planet))
